@@ -1,0 +1,12 @@
+.git
+.github
+node_modules
+npm-debug.log
+yarn-error.log
+.grunt
+.idea
+.vscode
+.phpunit.result.cache
+.DS_Store
+Thumbs.db
+
