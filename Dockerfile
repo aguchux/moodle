@@ -17,6 +17,7 @@ RUN set -eux; \
         libpq-dev \
         libxml2-dev \
         libzip-dev \
+        libonig-dev \
     ; \
     rm -rf /var/lib/apt/lists/*; \
     docker-php-ext-configure gd --with-freetype --with-jpeg; \
