@@ -1,4 +1,4 @@
-name: Windows Testing
+name: Disabled (upstream): Windows Testing
 
 on:
   workflow_dispatch:
@@ -12,6 +12,7 @@ env:
 
 jobs:
   Grunt:
+    if: false
     runs-on: windows-latest
 
     steps:
@@ -44,6 +45,7 @@ jobs:
           git diff --cached --exit-code
 
   PHPUnit:
+    if: false
     runs-on: ${{ matrix.os }}
 
     strategy:

@@ -1,4 +1,4 @@
-name: One by One Testing
+name: Disabled (upstream): One by One Testing
 # Run all the individual unit tests one by one, with
 # fully independent PHPUnit executions. Useful to
 # detect issues with some tests that are using stuff
@@ -32,6 +32,7 @@ env:
 jobs:
   collect:
     name: Collect individual unit tests
+    if: false
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{steps.individual-tests.outputs.matrix }}

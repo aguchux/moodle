@@ -1,10 +1,11 @@
-name: Web Installer Testing
+name: Disabled (upstream): Web Installer Testing
 
 on:
   workflow_dispatch:
 
 jobs:
   InstallationTest:
+    if: false
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

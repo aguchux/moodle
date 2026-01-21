@@ -1,12 +1,6 @@
-name: Core
+name: Disabled (upstream): Core
 
 on:
-  push:
-    branches-ignore:
-      - main
-      - MOODLE_[0-9]+_STABLE
-    tags-ignore:
-      - v[0-9]+.[0-9]+.[0-9]+*
   workflow_dispatch:
     inputs:
       phpunit_extra_options:

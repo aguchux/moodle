@@ -1,14 +1,11 @@
-name: 'Close Pull Requests'
+name: 'Disabled (upstream): Close Pull Requests'
 
 on:
-  pull_request_target:
-    types: opened
   workflow_dispatch:
 
 jobs:
   close:
-    # Avoid forks to run this job
-    if: github.repository_owner == 'moodle'
+    if: false
     name: Close Pull Requests
     runs-on: ubuntu-latest
     steps:
