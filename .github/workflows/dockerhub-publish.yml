@@ -6,6 +6,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+  DOCKER_REGISTRY: docker.io
+  DOCKER_NAMESPACE: golojan
 
 permissions:
   contents: read
@@ -35,7 +40,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: golojan/bvc-app
+          images: ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_NAMESPACE }}/bvc-app
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=ref,event=tag
