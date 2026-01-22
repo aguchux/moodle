@@ -1,3 +1,10 @@
+FROM composer:2 AS composer
+
+WORKDIR /app
+COPY composer.json composer.lock /app/
+RUN set -eux; \
+    composer install --no-dev --no-interaction --no-progress --prefer-dist --classmap-authoritative
+
 FROM php:8.3-apache
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -44,6 +51,7 @@ COPY docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 WORKDIR /var/www/html
 COPY . /var/www/html
+COPY --from=composer /app/vendor /var/www/html/vendor
 
 RUN set -eux; \
     mkdir -p "${MOODLE_DATA_ROOT}"; \
