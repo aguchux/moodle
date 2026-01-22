@@ -20,7 +20,14 @@
 *~
 #
 /config.php
+/k8s
+/k8s/
+/.kube/
 /tags
+/terraform.tfstate
+/terraform.tfstate.backup
+/terraform
+/terraform/
 /TAGS
 /cscope.*
 /.patches/
