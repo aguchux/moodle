@@ -18,7 +18,7 @@ if [ ! -f /var/www/html/config.php ] && [ "${MOODLE_AUTO_CONFIG:-0}" = "1" ]; th
   : "${MOODLE_DB_USER:=moodle}"
   : "${MOODLE_DB_PASS:=moodle}"
   : "${MOODLE_DB_PREFIX:=mdl_}"
-  : "${MOODLE_THEME:=}"
+  MOODLE_THEME="miva"
 
   if [ "${MOODLE_DB_TYPE}" = "pgsql" ]; then
     MOODLE_DB_COLLATION_LINE=""
@@ -26,10 +26,7 @@ if [ ! -f /var/www/html/config.php ] && [ "${MOODLE_AUTO_CONFIG:-0}" = "1" ]; th
     MOODLE_DB_COLLATION_LINE="  'dbcollation' => 'utf8mb4_unicode_ci',"
   fi
 
-  MOODLE_THEME_LINE=""
-  if [ -n "${MOODLE_THEME}" ]; then
-    MOODLE_THEME_LINE="\$CFG->theme = '${MOODLE_THEME}';"
-  fi
+  MOODLE_THEME_LINE="\$CFG->theme = '${MOODLE_THEME}';"
 
   cat > /var/www/html/config.php <<EOF
 <?php
