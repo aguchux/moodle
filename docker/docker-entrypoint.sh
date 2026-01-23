@@ -18,11 +18,17 @@ if [ ! -f /var/www/html/config.php ] && [ "${MOODLE_AUTO_CONFIG:-0}" = "1" ]; th
   : "${MOODLE_DB_USER:=moodle}"
   : "${MOODLE_DB_PASS:=moodle}"
   : "${MOODLE_DB_PREFIX:=mdl_}"
+  : "${MOODLE_THEME:=}"
 
   if [ "${MOODLE_DB_TYPE}" = "pgsql" ]; then
     MOODLE_DB_COLLATION_LINE=""
   else
     MOODLE_DB_COLLATION_LINE="  'dbcollation' => 'utf8mb4_unicode_ci',"
+  fi
+
+  MOODLE_THEME_LINE=""
+  if [ -n "${MOODLE_THEME}" ]; then
+    MOODLE_THEME_LINE="\$CFG->theme = '${MOODLE_THEME}';"
   fi
 
   cat > /var/www/html/config.php <<EOF
@@ -51,6 +57,7 @@ ${MOODLE_DB_COLLATION_LINE}
 
 \$CFG->reverseproxy = ${MOODLE_REVERSEPROXY:-false};
 \$CFG->sslproxy = ${MOODLE_SSLPROXY:-false};
+${MOODLE_THEME_LINE}
 
 require_once(__DIR__ . '/lib/setup.php');
 EOF
